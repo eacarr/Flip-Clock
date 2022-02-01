@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <title>Flip Clock</title>
     <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale= " />
 
     <meta property="og:title" content="" />
     <meta property="og:type" content="" />
@@ -13,7 +13,7 @@
     <!-- font awesome -->
     <link
       rel="stylesheet"
-      href="fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/all.css"
+      href="fontawesome-free-5. 5.4-web/fontawesome-free-5. 5.4-web/css/all.css"
     />
 
     <link rel="manifest" href="site.webmanifest" />
@@ -28,8 +28,73 @@
 
   <body>
     <!-- Add your site or application content here -->
-    <p>Hello world! This is HTML5 Boilerplate.</p>
-    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+    <div id="app">
+      <div class="flip-clock-container">
+        <!-- Hour flipper -->
+        <div class="flip-clock flip-clock-h">
+          <!-- data values with in digit class allow for division of the card in the middle -->
+          <div class="digit digit-left">
+            <!-- ::before -->
+            <div class="card">
+              <div class="card-face card-face-front"></div>
+              <div class="card-face card-face-back"></div>
+            </div>
+            <!-- ::after -->
+          </div>
+          <div class="digit digit-right">
+            <!-- ::before -->
+            <div class="card">
+              <div class="card-face card-face-front"></div>
+              <div class="card-face card-face-back"></div>
+            </div>
+            <!-- ::after -->
+          </div>
+        </div>
+        <div class="colon">:</div>
+        <!-- Minute flipper -->
+        <div class="flip-clock flip-clock-m">
+          <!-- data values with in digit class allow for division of the card in the middle -->
+          <div class="digit digit-left">
+            <!-- ::before -->
+            <div class="card">
+              <div class="card-face card-face-front"></div>
+              <div class="card-face card-face-back"></div>
+            </div>
+            <!-- ::after -->
+          </div>
+          <div class="digit digit-right">
+            <!-- ::before -->
+            <div class="card">
+              <div class="card-face card-face-front"></div>
+              <div class="card-face card-face-back"></div>
+            </div>
+            <!-- ::after -->
+          </div>
+        </div>
+        <!-- Second flipper -->
+        <div class="colon">:</div>
+        <div class="flip-clock flip-clock-s">
+          <!-- data values with in digit class allow for division of the card in the middle -->
+          <div class="digit digit-left">
+            <!-- ::before -->
+            <div class="card">
+              <div class="card-face card-face-front"></div>
+              <div class="card-face card-face-back"></div>
+            </div>
+            <!-- ::after -->
+          </div>
+          <div class="digit digit-right">
+            <!-- ::before -->
+            <div class="card">
+              <div class="card-face card-face-front"></div>
+              <div class="card-face card-face-back"></div>
+            </div>
+            <!-- ::after -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/vendor/modernizr-3.  .2.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
 

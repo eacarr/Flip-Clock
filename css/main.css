@@ -86,6 +86,207 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+::before,
+::after {
+  /* sets how the total width and height of an element is calculated */
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  background: teal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flip-clock-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 50px;
+  line-height: 0;
+}
+
+.flip-clock-container * {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+
+  /* The text of the element and its sub-elements is not selectable */
+  user-select: none;
+  cursor: default;
+}
+
+.flip-clock {
+  display: flex;
+  perspective: 100px;
+}
+
+.digit {
+  position: relative;
+  width: 45px;
+  height: 80px;
+  box-shadow: 0 0 2px 1px rgb(89, 196, 169);
+}
+
+.digit-left {
+  margin-right: 1px;
+}
+.digit-right {
+  margin-left: 1px;
+}
+
+.digit::before,
+.digit::after {
+  position: absolute;
+
+  /* sets the z-order of a positioned element and its descendants or flex items. 
+  Overlapping elements with a larger z-index cover those with a smaller one. */
+  z-index: 0;
+
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+}
+
+.digit::before {
+  /* used to retrieve the value of an attribute of the selected element  */
+  content: attr(data-digit-before);
+  bottom: 0;
+  align-items: flex-start;
+}
+.digit::after {
+  /* used to retrieve the value of an attribute of the selected element  */
+  content: attr(data-digit-after);
+  top: 0;
+  align-items: flex-end;
+}
+
+.card {
+  position: relative;
+
+  /* sets the z-order of a positioned element and its descendants or flex items. 
+  Overlapping elements with a larger z-index cover those with a smaller one. */
+  z-index: 1;
+  width: 100%;
+  height: 50%;
+
+  /* sets whether children of an element are positioned in the 3D space or are flattened in the plane of the element. */
+  transform-style: preserve-3d;
+
+  /* sets the origin for an element's transformations */
+  transform-origin: bottom;
+
+  /* a transformation that rotates an element around the abscissa (horizontal axis) without deforming it */
+  transform: rotateX(0);
+
+  /* ease-in-out - specifies a transition effect with a slow start and end */
+  transition: transform 0.7s ease-in-out;
+}
+
+/* class for js */
+.card.flipped {
+  transform: rotateX(-180deg);
+}
+
+.card-face {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  /* sets whether the back face of an element is visible when turned towards the user. */
+  backface-visibility: hidden;
+}
+
+.card-face-front {
+  align-items: flex-end;
+}
+.card-face-back {
+  align-items: flex-start;
+
+  /* a transformation that rotates an element around the abscissa (horizontal axis) without deforming it */
+  transform: rotateX(-180deg);
+}
+
+.digit::before,
+.digit::after,
+.card-face-front,
+.card-face-back {
+  background: white;
+  color: black;
+}
+
+.digit,
+.digit::before,
+.digit::after,
+.card,
+.card-face {
+  border-radius: 4px;
+}
+
+/* bottom of the card face */
+.digit::before,
+.card-face-back {
+  background: linear-gradient(0, #aaa, #ccc, 50%, #fafafa);
+  color: #212121;
+  border-top: 1px solid black;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* top of the card face */
+.digit::after,
+.card-face-front {
+  background: linear-gradient(0, #aaa, #bbb, 50%, #f5f5f5);
+  color: #212121;
+  border-bottom: 1px solid black;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.digit-left,
+.digit-left::before,
+.digit-left::after,
+.digit-left .card,
+.digit-left .card-face {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.digit-right,
+.digit-right::before,
+.digit-right::after,
+.digit-right .card,
+.digit-right .card-face {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.colon {
+  margin: 0 6px;
+  padding-bottom: 9px;
+}
 
 /* ==========================================================================
    Helper classes
@@ -94,7 +295,6 @@ textarea {
 /*
  * Hide visually and from screen readers
  */
-
 .hidden,
 [hidden] {
   display: none !important;
@@ -260,4 +460,3 @@ textarea {
     page-break-after: avoid;
   }
 }
-
